@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Task 5.1</title>
+</head>
+<body>
+    <div class="form">
+        <div class="wrapper">
+            <header>
+                <h1>Зміна властивостей зображення</h1>
+                <div class="image-block">
+                    <img src="unnamed.jpg" class="wallpaper" width="500px" height="300px" alt="Wallpaper">
+                </div>
+            </header>
+            <div class="width-height-div">
+                <h2>Зміна розмірів:</h2>
+                <div class="width-div form-row">
+                    <label for="width">Ширина (width)</label>
+                    <input type="text" name="width" id="width" value="500">
+                </div>
+                <div class="height form-row">
+                    <label for="height">Висота (height)</label>
+                    <input type="text" name="height" id="height" value="300">
+                </div>
+            </div>
+            <div class="border-div">
+                <h2>Зміна рамки:</h2>
+                <div class="border-width-div form-row">
+                    <label for="border_width">Товщина рамки</label>
+                    <input type="text" name="border_width" id="border_width" value="3">
+                </div>
+                <div class="border-color-div form-row">
+                    <label for="border_color">Колір рамки</label>
+                    <input type="text" name="border_color" id="border_color" value="#000080">
+                </div>
+            </div>
+            <div class="additionally-div">
+                <h2>Додатково:</h2>
+                <div class="alternative-text-div form-row">
+                    <label for="alternative_text">Альтернативний текс</label>
+                    <input type="text" name="alternative_text" id="alternative_text" value="Wallpaper">
+                </div>
+            </div>
+            <div class="button-div">
+                <button onclick="change()" class="submit">Застосувти параметри</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let patterns = {
+            width: /^\d{1,3}$/,
+            height: /^\d{1,3}$/,
+            border_width: /^\d{1,2}$/,
+            border_color: /^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/,
+            alternative_text: /^[\w ]{1,15}$/
+        }
+
+        const inputs = document.querySelectorAll('input');
+
+        const validate = (field, regex) => {
+            if(regex.test(field.value)) {
+                field.style.borderColor = '#36cc36';
+                return true;
+            }
+            else {
+                field.style.borderColor = '#CC0000';
+                return false;
+            }
+        }
+
+        inputs.forEach(inp => {
+            inp.addEventListener('keyup', e => {
+            validate(e.target, patterns[e.target.attributes.name.value]);
+            });
+        });
+
+        const change = () => {
+           
+            
+            let width = document.getElementById('width');
+            let height = document.getElementById('height');
+            let borderWidth = document.getElementById('border_width');
+            let borderColor = document.getElementById('border_color');
+            let alternativeText = document.getElementById('alternative_text');
+            
+            let inputArr = [width, height, borderWidth, borderColor, alternativeText];
+            var check = true;
+
+            inputArr.forEach(e => {
+                if(!validate(e, patterns[e.attributes.name.value])){
+                    alert('Invalid input.');
+                    check = false;
+                }
+            });
+            
+            if(!check) return;
+
+            let img = document.getElementsByClassName('wallpaper')[0];
+
+            img.setAttribute('width', `${width.value}px`);
+            img.setAttribute('height', `${height.value}px`);
+            img.style.borderWidth = `${borderWidth.value}px`;
+            img.style.borderColor = borderColor.value;
+            img.setAttribute('alt', alternativeText.value);
+        }
+    </script>
+
+</body>
+</html>
