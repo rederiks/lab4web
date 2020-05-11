@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #2E2E2E;
+}
+
+h2 {
+    padding-bottom: 5px;
+}
+
+header {
+    background: #3F729B;
+    color: #fff;
+}
+
+.container {
+    padding: 20px 60px;
+}
+
+#main {
+    padding: 20px;
+    border: 1px solid #B0B0B0;
+    border-radius: 6px;
+    background: #F5F5F5;
+}
+
+#main .add-input {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #B0B0B0;
+}
+
+#main .submit {
+    color: #F5F5F5;
+    background: #2E2E2E;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 3px;
+    transition: color .14s ease-in-out;
+}
+
+#main .submit:hover {
+    color: lightgray;
+    cursor: pointer;
+}
+
+#main form {
+    margin-bottom: 10px;
+}
+
+#items {
+    list-style: none;
+    border: 1px solid #B0B0B0;
+    border-radius: 5px;
+}
+
+
+
+#items li:last-child{
+    border-radius: 0 0 5px 5px; 
+}
+
+#items li:first-child{
+    border-radius: 5px 5px 0 0;
+}
+
+#items li{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px 5px 0 0; 
+}
+
+li span {
+    display: inline-block;
+    flex: 1;
+    padding-right: 20px;
+}
+
+.list-group-item:not(:last-child){
+    border-bottom: 1px solid #B0B0B0;
+}
+
+.delete-btn{
+    float: right;
+    color: white;
+    padding: 4px;
+    background: #ff4444;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background .14s ease-in-out;
+}
+
+.delete-btn:hover {
+    background: #CC0000;
+}
+
+#diagrams{
+    display: flex;
+    background: #F5F5F5;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #B0B0B0;
+    border-radius: 6px;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.diagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 5px;
+    color: #fff;
+    flex: 1;
+    height: 50px;
+    background: #4285F4;
+}
+
+/* validation styles */
+input.valid {
+    border-color: #36cc36;
+}
+
+input.invalid {
+    border-color: #CC0000;
+}
